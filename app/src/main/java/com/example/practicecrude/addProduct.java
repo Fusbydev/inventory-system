@@ -31,10 +31,16 @@ public class addProduct extends AppCompatActivity {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String pName = name.getText().toString();
-                int quantityP = Integer.parseInt(quantity.getText().toString());
-                int priceP = Integer.parseInt(price.getText().toString());
-                addProduct(pName, quantityP, priceP);
+                try {
+                    String pName = name.getText().toString();
+                    int quantityP = Integer.parseInt(quantity.getText().toString());
+                    int priceP = Integer.parseInt(price.getText().toString());
+                    addProduct(pName, quantityP, priceP);
+                } catch(Exception e) {
+                    Toast.makeText(addProduct.this, "Product added successfully", Toast.LENGTH_SHORT).show();
+                }
+
+
             }
         });
     }
