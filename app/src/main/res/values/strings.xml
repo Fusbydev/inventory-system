@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">practiceCrude</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_product">add product</string>
+    <string name="product">product</string>
+    <string name="quantity">quantity</string>
+    <string name="check_products">check products</string>
+</resources>

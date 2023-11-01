@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E91E63"
+    tools:context=".homeFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="73dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="200dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/inventoryButton"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:background="@drawable/button_background"
+            android:text="Inventory"
+            android:textSize="8dp" />
+
+        <Button
+            android:id="@+id/LoanButton"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:background="@drawable/button_background"
+            android:text="Credit"
+            android:layout_marginStart="5dp"
+            android:textSize="8dp" />
+
+        <Button
+            android:id="@+id/TransactionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:background="@drawable/button_background"
+            android:text="Transaction"
+            android:layout_marginStart="5dp"
+            android:textSize="8dp" />
+    </LinearLayout>
+</FrameLayout>
