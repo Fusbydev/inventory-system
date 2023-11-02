@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
                         .replace(R.id.container, selectedFragment)
                         .commit();
             } else if (itemId == R.id.profile) {
-                Fragment selectedFragment = new profileFragment(); // Replace with your ProfileFragment class
+                Fragment selectedFragment = new profileFragment();
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.container, selectedFragment)
                         .commit();
