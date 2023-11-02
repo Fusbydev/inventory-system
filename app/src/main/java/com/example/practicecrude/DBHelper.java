@@ -1,5 +1,6 @@
 package com.example.practicecrude;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -40,5 +41,22 @@ public class DBHelper extends SQLiteOpenHelper {
     public void deleteData(int id) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(PRODUCT_INVENTORY, PRODUCT_ID + "=?", new String[]{String.valueOf(id)});
+    }
+
+    public Boolean updateData(int id, String productName, int ProductQuantity, float productPrice) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(PRODUCT_NAME, productName);
+        values.put(PRODUCT_QUANTITY, ProductQuantity);
+        values.put(PRODUCT_PRICE, productPrice);
+
+        int rowsAffected = db.update(PRODUCT_INVENTORY, values, PRODUCT_ID+"=?", new String[]{String.valueOf(id)});
+        return rowsAffected > 0;
+    }
+
+    public Cursor getDataById(int id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + PRODUCT_INVENTORY + " WHERE " + PRODUCT_ID + "=?", new String[]{String.valueOf(id)});
+        return cursor;
     }
 }
