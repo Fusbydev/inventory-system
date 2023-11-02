@@ -83,7 +83,6 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.MyViewHolder> {
                     pnameQuantity.setText(String.valueOf(quantity));
                     pnamePrice.setText(String.valueOf(price));
                 }
-
                 dialog.show();
             }
         });
