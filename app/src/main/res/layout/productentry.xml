@@ -59,9 +59,8 @@
                 style="@android:style/TextAppearance.Small"/>
 
         </LinearLayout>
-
         <LinearLayout
-            android:id="@+id/containerL"
+            android:id="@+id/container1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -71,7 +70,7 @@
                 android:id="@+id/prodPriceet"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Quantity: "
+                android:text="Price: "
                 android:textSize="16sp"
                 style="@android:style/TextAppearance.Small"/>
 
@@ -84,7 +83,7 @@
 
         </LinearLayout>
         <LinearLayout
-            android:id="@+id/container1"
+            android:id="@+id/containerL"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -94,7 +93,7 @@
                 android:id="@+id/prodQuantityet"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Price: "
+                android:text="Quantity: "
                 android:textSize="16sp"
                 style="@android:style/TextAppearance.Small"/>
 
@@ -106,6 +105,7 @@
                 style="@android:style/TextAppearance.Small"/>
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
