@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.database.Cursor;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ public class editInventory extends AppCompatActivity {
     ArrayList<String> id, name, quantity, price;
     DBHelper DBh;
     myAdapter adapter;
+    Button deleteButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,12 +28,13 @@ public class editInventory extends AppCompatActivity {
         name = new ArrayList<>();
         quantity = new ArrayList<>();
         price = new ArrayList<>();
-
         RecyclerView = findViewById(R.id.recycleView);
         adapter = new myAdapter(this, id, name, quantity, price);
         RecyclerView.setAdapter(adapter);
         RecyclerView.setLayoutManager(new LinearLayoutManager(this));
         displayData();
+
+
     }
 
     private void displayData() {

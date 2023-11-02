@@ -37,4 +37,8 @@ public class DBHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(query, null);
         return cursor;
     }
+    public void deleteData(int id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(PRODUCT_INVENTORY, PRODUCT_ID + "=?", new String[]{String.valueOf(id)});
+    }
 }
