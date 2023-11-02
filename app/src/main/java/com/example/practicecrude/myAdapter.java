@@ -63,6 +63,7 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.MyViewHolder> {
                 productQuantity.remove(holder.getAdapterPosition());
                 productPrice.remove(holder.getAdapterPosition());
                 notifyDataSetChanged();
+
                 Toast.makeText(context, "Product Successfully Deleted", Toast.LENGTH_SHORT).show();
             }
         });
