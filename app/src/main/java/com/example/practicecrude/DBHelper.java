@@ -34,6 +34,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public Cursor getAllData() {
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT * FROM " + PRODUCT_INVENTORY;
-        return db.rawQuery(query, null);
+        Cursor cursor = db.rawQuery(query, null);
+        return cursor;
     }
 }
