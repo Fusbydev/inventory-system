@@ -34,7 +34,7 @@ public class addProduct extends AppCompatActivity {
                 try {
                     String pName = name.getText().toString();
                     int quantityP = Integer.parseInt(quantity.getText().toString());
-                    int priceP = Integer.parseInt(price.getText().toString());
+                    float priceP = Integer.parseInt(price.getText().toString());
                     addProduct(pName, quantityP, priceP);
                     name.setText("");
                     price.setText("");
@@ -48,7 +48,7 @@ public class addProduct extends AppCompatActivity {
         });
     }
 
-    public void addProduct(String name, int quantity, int price) {
+    public void addProduct(String name, int quantity, float price) {
         SQLiteDatabase db = DBHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(DBHelper.PRODUCT_NAME, name);

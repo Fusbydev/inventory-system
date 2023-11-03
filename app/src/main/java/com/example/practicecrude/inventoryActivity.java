@@ -50,25 +50,23 @@
         }
         public void populateData() {
             cursor = DBHelper.getAllData();
-            if (cursor.moveToFirst()) {
-
-                TableRow headerRow = new TableRow(this);
-                headerRow.setBackgroundColor(Color.GRAY); // Header row background color
-                for (int i = 0; i < cursor.getColumnCount(); i++) {
-                    TextView headerCell = new TextView(this);
-                    headerCell.setText(cursor.getColumnName(i));
-                    headerCell.setTextSize(8);
-                    headerCell.setPadding(0, 5, 0, 5);
-                    headerCell.setGravity(Gravity.CENTER);
-                    headerCell.setTextColor(Color.WHITE); // Header text color
-                    TableRow.LayoutParams layoutParams = new TableRow.LayoutParams(
-                            TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT
-                    );
-                    layoutParams.setMargins(45, 20, 45, 20); // Left and right margins
-                    headerCell.setLayoutParams(layoutParams);
-                    headerRow.addView(headerCell);
-                }
-                tbL.addView(headerRow);
+            TableRow headerRow = new TableRow(this);
+            headerRow.setBackgroundColor(Color.GRAY); // Header row background color
+            for (int i = 0; i < cursor.getColumnCount(); i++) {
+                TextView headerCell = new TextView(this);
+                headerCell.setText(cursor.getColumnName(i));
+                headerCell.setTextSize(8);
+                headerCell.setPadding(0, 5, 0, 5);
+                headerCell.setGravity(Gravity.CENTER);
+                headerCell.setTextColor(Color.WHITE); // Header text color
+                TableRow.LayoutParams layoutParams = new TableRow.LayoutParams(
+                        TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT
+                );
+                layoutParams.setMargins(45, 20, 45, 20); // Left and right margins
+                headerCell.setLayoutParams(layoutParams);
+                headerRow.addView(headerCell);
+            }
+            tbL.addView(headerRow);
 
                 while (cursor.moveToNext()) {
                     TableRow row = new TableRow(this);
@@ -94,5 +92,4 @@
                 cursor.close();
                 DBHelper.close();
             }
-        }
     }
