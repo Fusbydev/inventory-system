@@ -36,6 +36,9 @@ public class addProduct extends AppCompatActivity {
                     int quantityP = Integer.parseInt(quantity.getText().toString());
                     int priceP = Integer.parseInt(price.getText().toString());
                     addProduct(pName, quantityP, priceP);
+                    name.setText("");
+                    price.setText("");
+                    quantity.setText("");
                 } catch(Exception e) {
                     Toast.makeText(addProduct.this, "Fill all the fields", Toast.LENGTH_SHORT).show();
                 }
