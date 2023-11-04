@@ -1,6 +1,8 @@
 package com.example.practicecrude;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -57,13 +59,8 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.MyViewHolder> {
             @Override
             public void onClick(View view) {
                 int idToDelete = Integer.parseInt(productID.get(holder.getAdapterPosition()));
-                db.deleteData(idToDelete);
-                productID.remove(holder.getAdapterPosition());
-                productName.remove(holder.getAdapterPosition());
-                productQuantity.remove(holder.getAdapterPosition());
-                productPrice.remove(holder.getAdapterPosition());
-                notifyDataSetChanged();
-                Toast.makeText(context, "Product Successfully Deleted", Toast.LENGTH_SHORT).show();
+                deleteDialog(holder, idToDelete);
+
             }
         });
 
@@ -135,5 +132,28 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.MyViewHolder> {
         });
 
         dialog.setContentView(view);
+    }
+
+    void deleteDialog(final MyViewHolder holder, int idDelete) {
+        AlertDialog.Builder deleteBuilder = new AlertDialog.Builder(context);
+        deleteBuilder.setTitle("Delete");
+        deleteBuilder.setMessage("Do you want to delete this product?");
+
+        deleteBuilder.setPositiveButton("Yes", (dialogInterface, i) -> {
+            db.deleteData(idDelete);
+            productID.remove(holder.getAdapterPosition());
+            productName.remove(holder.getAdapterPosition());
+            productQuantity.remove(holder.getAdapterPosition());
+            productPrice.remove(holder.getAdapterPosition());
+            notifyDataSetChanged();
+            Toast.makeText(context, "Product Successfully Deleted", Toast.LENGTH_SHORT).show();
+        });
+        deleteBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+        deleteBuilder.show();
     }
 }
