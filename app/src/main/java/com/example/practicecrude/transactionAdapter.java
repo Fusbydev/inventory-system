@@ -51,6 +51,7 @@ public class transactionAdapter extends RecyclerView.Adapter<transactionAdapter.
         holder.increment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //may error pa na iincrement yung value ng ibang product here mwa
                 prodQuant++;
                 holder.value.setText(String.valueOf(prodQuant));
                 if(prodQuant >= 0) {
