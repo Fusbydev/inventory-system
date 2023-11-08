@@ -60,14 +60,30 @@ public class DBHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
-    public Boolean updateQuantity(int newQuantity, int id) {
+    public boolean updateQuantity(int newQuantity, int id) {
         SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
 
-        values.put(PRODUCT_QUANTITY, newQuantity);
-        int rowsAffected = db.update(PRODUCT_INVENTORY, values, PRODUCT_ID+"=?", new String[]{String.valueOf(id)});
+        int currentQuantity = 0;
+
+        // Retrieve the current quantity from the database
+        Cursor cursor = db.query(PRODUCT_INVENTORY, new String[]{PRODUCT_QUANTITY}, PRODUCT_ID + "=?", new String[]{String.valueOf(id)}, null, null, null);
+        if (cursor.moveToFirst()) {
+            currentQuantity = cursor.getInt(0);
+        }
+        cursor.close();
+
+        // Calculate the updated quantity
+        int updatedQuantity = currentQuantity - newQuantity;
+
+        ContentValues values = new ContentValues();
+        values.put(PRODUCT_QUANTITY, updatedQuantity);
+
+        // Update the database with the new quantity value
+        int rowsAffected = db.update(PRODUCT_INVENTORY, values, PRODUCT_ID + "=?", new String[]{String.valueOf(id)});
 
         return rowsAffected > 0;
     }
+
+
 
 }
