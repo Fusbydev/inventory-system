@@ -59,4 +59,15 @@ public class DBHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery("SELECT * FROM " + PRODUCT_INVENTORY + " WHERE " + PRODUCT_ID + "=?", new String[]{String.valueOf(id)});
         return cursor;
     }
+
+    public Boolean updateQuantity(int newQuantity, int id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(PRODUCT_QUANTITY, newQuantity);
+        int rowsAffected = db.update(PRODUCT_INVENTORY, values, PRODUCT_ID+"=?", new String[]{String.valueOf(id)});
+
+        return rowsAffected > 0;
+    }
+
 }

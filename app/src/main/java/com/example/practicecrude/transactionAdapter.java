@@ -7,11 +7,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.zip.Inflater;
 
 public class transactionAdapter extends RecyclerView.Adapter<transactionAdapter.MyViewHolder> {
 
@@ -21,7 +24,13 @@ public class transactionAdapter extends RecyclerView.Adapter<transactionAdapter.
     private ArrayList<String> productQuantity;
     private ArrayList<String> productPrice;
     DBHelper db;
-    int prodQuant = 0;
+
+    transactionAct transAct;
+
+    int id;
+    int newQuan;
+
+    EditText value;
 
     public transactionAdapter(Context context, ArrayList<String> productID, ArrayList<String> productName, ArrayList<String> productQuantity, ArrayList<String> productPrice) {
         this.context = context;
@@ -30,6 +39,7 @@ public class transactionAdapter extends RecyclerView.Adapter<transactionAdapter.
         this.productQuantity = productQuantity;
         this.productPrice = productPrice;
         db = new DBHelper(context);
+        transAct = new transactionAct();
     }
 
     @NonNull
@@ -47,32 +57,8 @@ public class transactionAdapter extends RecyclerView.Adapter<transactionAdapter.
         holder.product_quantity.setText(productQuantity.get(position));
         holder.product_price.setText(productPrice.get(position));
 
+        id = holder.getAdapterPosition();
 
-        holder.increment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //may error pa na iincrement yung value ng ibang product here mwa
-                prodQuant++;
-                holder.value.setText(String.valueOf(prodQuant));
-                if(prodQuant >= 0) {
-                    holder.decrement.setEnabled(true);
-                } else {
-                    holder.decrement.setEnabled(false);
-                }
-            }
-        });
-        holder.decrement.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                prodQuant--;
-                holder.value.setText(String.valueOf(prodQuant));
-                if(prodQuant <= 0) {
-                    holder.decrement.setEnabled(false);
-                } else {
-                    holder.decrement.setEnabled(true);
-                }
-            }
-        });
     }
 
     @Override
@@ -82,18 +68,20 @@ public class transactionAdapter extends RecyclerView.Adapter<transactionAdapter.
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView product_id, product_name, product_quantity, product_price;
-        Button increment, decrement;
-        EditText value;
+
+
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-
             product_id = itemView.findViewById(R.id.prodid);
             product_name = itemView.findViewById(R.id.prodName);
             product_quantity = itemView.findViewById(R.id.prodQuantity);
             product_price = itemView.findViewById(R.id.prodPrice);
-            increment = itemView.findViewById(R.id.increment);
-            decrement = itemView.findViewById(R.id.decrement);
             value = itemView.findViewById(R.id.value);
         }
     }
+
+    public int id() {
+       return id;
+    }
+
 }
