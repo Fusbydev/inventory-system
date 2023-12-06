@@ -29,6 +29,7 @@
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_inventory);
             editInventory = findViewById(R.id.editInventory);
+
             editInventory.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

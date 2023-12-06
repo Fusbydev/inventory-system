@@ -13,6 +13,18 @@
         android:theme="@style/Theme.PracticeCrude"
         tools:targetApi="31">
         <activity
+            android:name=".TransactionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginPageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginpageActivity"
+            android:exported="false" />
+        <activity
             android:name=".transactionAct"
             android:exported="false" />
         <activity
@@ -23,7 +35,8 @@
             android:exported="false" />
         <activity
             android:name=".inventoryActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -33,6 +46,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
