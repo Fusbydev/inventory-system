@@ -53,7 +53,7 @@
             cursor = DBHelper.getAllData();
             TableRow headerRow = new TableRow(this);
             headerRow.setBackgroundColor(Color.GRAY); // Header row background color
-            for (int i = 0; i < cursor.getColumnCount(); i++) {
+            for (int i = 0; i < cursor.getColumnCount()-2; i++) {
                 TextView headerCell = new TextView(this);
                 headerCell.setText(cursor.getColumnName(i));
                 headerCell.setTextSize(8);
@@ -71,7 +71,7 @@
 
                 while (cursor.moveToNext()) {
                     TableRow row = new TableRow(this);
-                    for (int i = 0; i < cursor.getColumnCount(); i++) {
+                    for (int i = 0; i < cursor.getColumnCount()-2; i++) {
                         TextView cell = new TextView(this);
                         cell.setText(cursor.getString(i));
                         cell.setPadding(5, 5, 5, 5);

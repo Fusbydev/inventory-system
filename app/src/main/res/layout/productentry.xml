@@ -10,23 +10,24 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="167dp"
         android:layout_margin="16dp"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_gravity="center_vertical">
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/prodidet"
+                style="@android:style/TextAppearance.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_bold"
                 android:text="ID: "
-                android:textSize="16sp"
-                style="@android:style/TextAppearance.Small"/>
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/prodid"
@@ -40,77 +41,109 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_gravity="center_vertical">
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/prodNameet"
+                style="@android:style/TextAppearance.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_bold"
                 android:text="Name: "
-                android:textSize="16sp"
-                style="@android:style/TextAppearance.Small"/>
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/prodName"
+                style="@android:style/TextAppearance.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
-                style="@android:style/TextAppearance.Small"/>
+                android:textSize="16sp" />
 
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/container1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_gravity="center_vertical">
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/prodPriceet"
+                style="@android:style/TextAppearance.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_bold"
                 android:text="Price: "
-                android:textSize="16sp"
-                style="@android:style/TextAppearance.Small"/>
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/prodPrice"
+                style="@android:style/TextAppearance.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
-                style="@android:style/TextAppearance.Small"/>
+                android:textSize="16sp" />
 
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/investment"
+                style="@android:style/TextAppearance.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/roboto_bold"
+                android:text="Investment: "
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/investmentT"
+                style="@android:style/TextAppearance.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
         <LinearLayout
             android:id="@+id/containerL"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_gravity="center_vertical">
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/prodQuantityet"
+                android:id="@+id/prodQuantityet2"
+                style="@android:style/TextAppearance.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/roboto_bold"
                 android:text="Quantity: "
-                android:textSize="16sp"
-                style="@android:style/TextAppearance.Small"/>
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/prodQuantity"
+                style="@android:style/TextAppearance.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
-                style="@android:style/TextAppearance.Small"/>
+                android:textSize="16sp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:layout_marginTop="0dp"
+            android:orientation="horizontal">
 
             <Button
                 android:id="@+id/editBtn1"
@@ -118,16 +151,16 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10sp"
                 android:layout_marginRight="10sp"
-                android:text="Edit"
-                />
+                android:fontFamily="@font/sen_bold"
+                android:text="Edit" />
 
             <Button
                 android:id="@+id/deleteButton"
-                android:layout_width="140dp"
+                android:layout_width="141dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10sp"
-                android:text="Delete"
-                />
+                android:fontFamily="@font/sen_bold"
+                android:text="Delete" />
 
 
         </LinearLayout>

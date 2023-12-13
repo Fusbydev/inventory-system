@@ -3,13 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#DD5341">
+    android:background="#F9F5EB">
 
     <FrameLayout
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:background="#DD5341"
+        android:background="#002B5B"
         tools:ignore="MissingConstraints">
 
         <TextView
@@ -46,14 +46,16 @@
             android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:background="@drawable/specific_corner_today"
+            android:fontFamily="@font/sen_bold"
             android:text="Transaction"
             app:cornerRadius="10dp" />
 
         <Button
-            android:id="@+id/button5"
+            android:id="@+id/creditTrans"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/none_rounded_corners"
+            android:fontFamily="@font/sen_bold"
             android:shape="rectangle"
             android:text="Credit
 " />
@@ -64,6 +66,7 @@
             android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:background="@drawable/specific_corner_yearly"
+            android:fontFamily="@font/sen_bold"
             android:text="Expense Tracker"
             app:cornerRadius="10dp" />
     </LinearLayout>
@@ -73,17 +76,23 @@
         android:layout_width="409dp"
         android:layout_height="60dp"
         android:layout_marginTop="48dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="10dp"
         android:background="#DDDBDB"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayout"
-        tools:layout_editor_absoluteX="0dp">
+        app:layout_constraintBottom_toTopOf="@+id/frameLayout3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout">
 
         <TextView
             android:id="@+id/textView6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginVertical="10dp"
-            android:layout_marginStart="280dp"
-            android:text="Yearly"
+            android:layout_marginStart="295dp"
+            android:fontFamily="@font/sen_bold"
+            android:text="Monthly"
+            android:textColor="#121212"
             android:textSize="24sp" />
 
         <TextView
@@ -91,8 +100,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginVertical="10dp"
-            android:layout_marginStart="140dp"
-            android:text="Monthly"
+            android:layout_marginStart="155dp"
+            android:fontFamily="@font/sen_bold"
+            android:text="Weekly"
+            android:textColor="#121212"
             android:textSize="24sp" />
 
         <TextView
@@ -100,8 +111,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginVertical="10dp"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="25dp"
+            android:fontFamily="@font/sen_bold"
             android:text="Today"
+            android:textColor="#121212"
             android:textSize="24sp" />
     </FrameLayout>
 
@@ -109,30 +122,70 @@
         android:layout_width="350dp"
         android:layout_height="300dp"
         android:layout_marginStart="1dp"
+        android:layout_marginTop="150dp"
         android:layout_marginEnd="1dp"
         android:layout_marginBottom="1dp"
-        android:layout_marginTop="150dp"
         android:background="@drawable/rounded_corners"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/centeredLinearLayout">
+        app:layout_constraintTop_toBottomOf="@+id/centeredLinearLayout"
+        app:layout_constraintVertical_bias="0.931">
+
+        <TableLayout
+            android:id="@+id/transactionTableLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp">
+            <!-- Table rows will be dynamically added here -->
+        </TableLayout>
 
     </FrameLayout>
 
     <FrameLayout
+        android:id="@+id/frameLayout3"
         android:layout_width="409dp"
         android:layout_height="84dp"
         android:layout_marginTop="1dp"
-        android:layout_marginBottom="30dp"
-        android:background="#DD5341"
+        android:layout_marginBottom="100dp"
+        android:background="#F9F5EB"
         app:layout_constraintBottom_toTopOf="@+id/centeredLinearLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/frameLayout2"
         app:layout_constraintVertical_bias="1.0">
 
+        <TextView
+            android:id="@+id/today"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:layout_marginStart="20dp"
+            android:fontFamily="@font/sen_bold"
+            android:text="today"
+            android:textColor="#121212" />
+
+        <TextView
+            android:id="@+id/weekly"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:layout_marginStart="160dp"
+            android:fontFamily="@font/sen_bold"
+            android:text="weekly"
+            android:textColor="#121212" />
+
+        <TextView
+            android:id="@+id/monthly"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:layout_marginStart="300dp"
+            android:fontFamily="@font/sen_bold"
+            android:text="monthly"
+            android:textColor="#121212" />
     </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

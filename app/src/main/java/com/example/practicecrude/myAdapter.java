@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.WindowDecorActionBar;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -25,17 +26,19 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.MyViewHolder> {
     private ArrayList<String> productName;
     private ArrayList<String> productQuantity;
     private ArrayList<String> productPrice;
+    private ArrayList<String> investment;
     DBHelper db;
     BottomSheetDialog dialog;
     int idToEdit; // Add a member variable to store the ID to edit
-    EditText pnameEdit, pnameQuantity, pnamePrice; // Declare EditText fields
+    EditText pnameEdit, pnameQuantity, pnamePrice, inves; // Declare EditText fields
 
-    public myAdapter(Context context, ArrayList<String> productID, ArrayList<String> productName, ArrayList<String> productQuantity, ArrayList<String> productPrice) {
+    public myAdapter(Context context, ArrayList<String> productID, ArrayList<String> productName, ArrayList<String> productQuantity, ArrayList<String> productPrice, ArrayList<String> investment) {
         this.context = context;
         this.productID = productID;
         this.productName = productName;
         this.productQuantity = productQuantity;
         this.productPrice = productPrice;
+        this.investment = investment;
         db = new DBHelper(context);
         dialog = new BottomSheetDialog(context);
         createDialog(); // Initialize createDialog here without a parameter
@@ -54,6 +57,7 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.MyViewHolder> {
         holder.product_name.setText(productName.get(position));
         holder.product_quantity.setText(productQuantity.get(position));
         holder.product_price.setText(productPrice.get(position));
+        holder.investment.setText(productPrice.get(position));
 
         holder.deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,7 +95,7 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.MyViewHolder> {
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView product_id, product_name, product_quantity, product_price;
+        TextView product_id, product_name, product_quantity, product_price, investment;
         Button deleteButton, editButton;
 
         public MyViewHolder(@NonNull View itemView) {
@@ -100,6 +104,7 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.MyViewHolder> {
             product_name = itemView.findViewById(R.id.prodName);
             product_quantity = itemView.findViewById(R.id.prodQuantity);
             product_price = itemView.findViewById(R.id.prodPrice);
+            investment = itemView.findViewById(R.id.investmentT);
             deleteButton = itemView.findViewById(R.id.deleteButton);
             editButton = itemView.findViewById(R.id.editBtn1);
         }
@@ -136,17 +141,24 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.MyViewHolder> {
 
     void deleteDialog(final MyViewHolder holder, int idDelete) {
         AlertDialog.Builder deleteBuilder = new AlertDialog.Builder(context);
-        deleteBuilder.setTitle("Delete");
-        deleteBuilder.setMessage("Do you want to delete this product?");
-
+        deleteBuilder.setTitle("Enter Password to Delete");
+        final EditText input = new EditText(context);
+        deleteBuilder.setView(input);
         deleteBuilder.setPositiveButton("Yes", (dialogInterface, i) -> {
-            db.deleteData(idDelete);
-            productID.remove(holder.getAdapterPosition());
-            productName.remove(holder.getAdapterPosition());
-            productQuantity.remove(holder.getAdapterPosition());
-            productPrice.remove(holder.getAdapterPosition());
-            notifyDataSetChanged();
-            Toast.makeText(context, "Product Successfully Deleted", Toast.LENGTH_SHORT).show();
+            String userInput = String.valueOf(input.getText());
+
+            if(userInput.matches("password")) {
+                db.deleteData(idDelete);
+                productID.remove(holder.getAdapterPosition());
+                productName.remove(holder.getAdapterPosition());
+                productQuantity.remove(holder.getAdapterPosition());
+                productPrice.remove(holder.getAdapterPosition());
+
+                notifyDataSetChanged();
+                Toast.makeText(context, "Product Successfully Deleted", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(context, "Wrong password", Toast.LENGTH_SHORT).show();
+            }
         });
         deleteBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
             @Override
@@ -156,4 +168,5 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.MyViewHolder> {
         });
         deleteBuilder.show();
     }
+
 }

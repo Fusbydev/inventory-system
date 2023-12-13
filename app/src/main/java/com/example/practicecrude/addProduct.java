@@ -10,9 +10,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import kotlin.collections.IndexedValue;
+
 public class addProduct extends AppCompatActivity {
     Button addButton;
-    EditText name, quantity, price;
+    EditText name, quantity, price, investmentq;
     DBHelper DBHelper;
     inventoryActivity inventoryAct;
     @Override
@@ -25,6 +27,8 @@ public class addProduct extends AppCompatActivity {
         addButton = findViewById(R.id.AddButton);
         name = findViewById(R.id.productName);
         price = findViewById(R.id.Price);
+        investmentq = findViewById(R.id.investment);
+
         inventoryAct = new inventoryActivity();
 
         quantity = findViewById(R.id.quantity);
@@ -35,10 +39,12 @@ public class addProduct extends AppCompatActivity {
                     String pName = name.getText().toString();
                     int quantityP = Integer.parseInt(quantity.getText().toString());
                     float priceP = Integer.parseInt(price.getText().toString());
-                    addProduct(pName, quantityP, priceP);
+                    float investmente = Integer.parseInt(investmentq.getText().toString());
+                    addProduct(pName, quantityP, priceP, investmente);
                     name.setText("");
                     price.setText("");
                     quantity.setText("");
+                    investmentq.setText("");
                 } catch(Exception e) {
                     Toast.makeText(addProduct.this, "Fill all the fields", Toast.LENGTH_SHORT).show();
                 }
@@ -48,12 +54,14 @@ public class addProduct extends AppCompatActivity {
         });
     }
 
-    public void addProduct(String name, int quantity, float price) {
+    public void addProduct(String name, int quantity, float price, float inv) {
         SQLiteDatabase db = DBHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(DBHelper.PRODUCT_NAME, name);
         values.put(DBHelper.PRODUCT_QUANTITY, quantity);
         values.put(DBHelper.PRODUCT_PRICE, price);
+        values.put(DBHelper.PRODUCT_INVESTMENT, inv);
+        values.put(DBHelper.INITIAL_QUANTITY, quantity);
 
         long newRowId = db.insert(DBHelper.PRODUCT_INVENTORY, null, values);
 

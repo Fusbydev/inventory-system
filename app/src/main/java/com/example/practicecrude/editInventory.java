@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class editInventory extends AppCompatActivity {
 
     RecyclerView RecyclerView;
-    ArrayList<String> id, name, quantity, price;
+    ArrayList<String> id, name, quantity, price, investment;
     DBHelper DBh;
     myAdapter adapter;
     @Override
@@ -27,8 +27,9 @@ public class editInventory extends AppCompatActivity {
         name = new ArrayList<>();
         quantity = new ArrayList<>();
         price = new ArrayList<>();
+        investment = new ArrayList<>();
         RecyclerView = findViewById(R.id.recycleView);
-        adapter = new myAdapter(this, id, name, quantity, price);
+        adapter = new myAdapter(this, id, name, quantity, price, investment);
         RecyclerView.setAdapter(adapter);
         RecyclerView.setLayoutManager(new LinearLayoutManager(this));
         displayData();
@@ -46,6 +47,7 @@ public class editInventory extends AppCompatActivity {
                 name.add(cursor.getString(1));
                 price.add(cursor.getString(2));
                 quantity.add(cursor.getString(3));
+                investment.add(cursor.getString(4));
             }
         }
     }

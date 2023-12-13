@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <EditText
+            android:id="@+id/ceditname"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Edit Name"
+            android:inputType="text"/>
+
+        <EditText
+            android:id="@+id/ceditloan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ceditname"
+            android:layout_marginTop="50dp"
+            android:ems="10"
+            android:hint="Edit Loan"
+            android:inputType="number" />
+
+        <Button
+            android:id="@+id/editBtn"
+            android:layout_width="127dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ceditloan"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="146dp"
+            android:layout_marginTop="29dp"
+            android:layout_marginEnd="137dp"
+            android:text="Edit" />
+    </RelativeLayout>
+</LinearLayout>

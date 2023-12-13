@@ -2,14 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/home"
-        android:icon="@drawable/baseline_add_home_24"
-        android:title="Home" />
+        android:icon="@drawable/baseline_add_home_36"
+        android:title=" " />
     <item
         android:id="@+id/trans"
-        android:icon="@drawable/baseline_monetization_on_24"
-        android:title="Transaction" />
+        android:icon="@drawable/baseline_monetization_on_36"
+        android:title=" " />
     <item
         android:id="@+id/profile"
-        android:icon="@drawable/baseline_person_2_24"
-        android:title="Profile" />
+        android:icon="@drawable/baseline_person_2_36"
+        android:title=" " />
 </menu>

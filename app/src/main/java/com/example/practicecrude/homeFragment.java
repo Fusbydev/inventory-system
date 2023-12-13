@@ -1,14 +1,23 @@
 package com.example.practicecrude;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,6 +35,8 @@ public class homeFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     Button InventoryButton;
+    Button creditButton;
+    Button income;
     public homeFragment() {
         // Required empty public constructor
     }
@@ -69,7 +80,93 @@ public class homeFragment extends Fragment {
             startActivity(intent);
         });
 
+        creditButton = view.findViewById(R.id.TransactionButton);
+        creditButton.setOnClickListener(view1 -> {
+            Intent intent = new Intent(getActivity(), creditAct.class);
+            startActivity(intent);
+        });
+
+        income = view.findViewById(R.id.incometracker);
+        income.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               FragmentManager fragmentManager = requireActivity().getSupportFragmentManager(); // For Fragment
+
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.container, new transactionFragment());
+                fragmentTransaction.addToBackStack(null); // Optional: Add the transaction to the back stack
+                fragmentTransaction.commit();
+            }
+        });
+        displayPastTransactions(view);
 
         return view;
+    }
+
+    private void displayPastTransactions(View view) {
+        // Replace this with your actual data retrieval logic
+        ArrayList<Transaction> transactions = getDataFromDatabase();
+
+        // Access the TableLayout
+        TableLayout transactionTable = view.findViewById(R.id.transactionTableLayout);
+
+        // Create header row
+        TableRow headerRow = createTableRow();
+        addHeaderTextView(headerRow, "Transaction ID");
+        addHeaderTextView(headerRow, "Product ID");
+        addHeaderTextView(headerRow, "Product Name");
+        addHeaderTextView(headerRow, "Quantity");
+        transactionTable.addView(headerRow);
+
+        // Create rows for each transaction and add them to the table
+        for (Transaction transaction : transactions) {
+            TableRow row = createTableRow();
+
+            addDataTextView(row, String.valueOf(transaction.getTransID()));
+            addDataTextView(row, String.valueOf(transaction.getProductId()));
+            addDataTextView(row, transaction.getProductName());
+            addDataTextView(row, String.valueOf(transaction.getQuantity()));
+
+            transactionTable.addView(row);
+        }
+    }
+
+    private TableRow createTableRow() {
+        TableRow row = new TableRow(requireContext());
+        row.setLayoutParams(new TableLayout.LayoutParams(
+                TableLayout.LayoutParams.MATCH_PARENT,
+                TableLayout.LayoutParams.WRAP_CONTENT));
+
+        row.setBackgroundResource(R.drawable.table_border);
+
+        return row;
+    }
+
+    private void addHeaderTextView(TableRow row, String text) {
+        TextView textView = createTextView(text, true);
+        row.addView(textView);
+    }
+
+    private void addDataTextView(TableRow row, String text) {
+        TextView textView = createTextView(text, false);
+        row.addView(textView);
+    }
+
+    private TextView createTextView(String text, boolean isHeader) {
+        TextView textView = new TextView(requireContext());
+        textView.setText(text);
+        textView.setPadding(8, 8, 8, 8);
+        textView.setTextColor(isHeader ? Color.WHITE : Color.BLACK);
+        textView.setTypeface(null, isHeader ? Typeface.BOLD : Typeface.NORMAL);
+
+        textView.setBackgroundResource(R.drawable.table_cell_border);
+
+        return textView;
+    }
+
+    private ArrayList<Transaction> getDataFromDatabase() {
+        DBHelper dbHelper = new DBHelper(requireContext());
+        ArrayList<Transaction> transactions = dbHelper.getAllTransactionsTop(3);
+        return transactions;
     }
 }

@@ -17,14 +17,16 @@ public class transactionAdapter extends RecyclerView.Adapter<transactionAdapter.
     private ArrayList<String> productName;
     private ArrayList<String> productQuantity;
     private ArrayList<String> productPrice;
+    private ArrayList<String> investment;
     DBHelper db;
 
-    public transactionAdapter(Context context, ArrayList<String> productID, ArrayList<String> productName, ArrayList<String> productQuantity, ArrayList<String> productPrice) {
+    public transactionAdapter(Context context, ArrayList<String> productID, ArrayList<String> productName, ArrayList<String> productQuantity, ArrayList<String> productPrice, ArrayList<String> investment) {
         this.context = context;
         this.productID = productID;
         this.productName = productName;
         this.productQuantity = productQuantity;
         this.productPrice = productPrice;
+        this.investment = investment;
         db = new DBHelper(context);
     }
 
@@ -54,9 +56,19 @@ public class transactionAdapter extends RecyclerView.Adapter<transactionAdapter.
                     Boolean success = db.updateQuantity(newquan1, id);
 
                     if (success) {
-                        Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show();
+                        // Insert the transaction into the Transaction table
+                        boolean transactionSuccess = db.insertTransaction(id,
+                                productName.get(position),
+                                Integer.parseInt(productPrice.get(position)),
+                                newquan1);
+
+                        if (transactionSuccess) {
+                            Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(context, "Failed to insert transaction", Toast.LENGTH_SHORT).show();
+                        }
                     } else {
-                        Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "Failed to update quantity", Toast.LENGTH_SHORT).show();
                     }
                 }
             }

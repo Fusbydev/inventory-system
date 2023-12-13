@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class transactionAct extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    ArrayList<String> id, name, quantity, price;
+    ArrayList<String> id, name, quantity, price, investment;
     DBHelper DBh;
     transactionAdapter adapter;
     Button saveButton;
@@ -28,8 +28,9 @@ public class transactionAct extends AppCompatActivity {
         name = new ArrayList<>();
         quantity = new ArrayList<>();
         price = new ArrayList<>();
+        investment = new ArrayList<>();
         recyclerView = findViewById(R.id.recycleView1);
-        adapter = new transactionAdapter(this, id, name, quantity, price);
+        adapter = new transactionAdapter(this, id, name, quantity, price, investment);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         saveButton = findViewById(R.id.saveButton);

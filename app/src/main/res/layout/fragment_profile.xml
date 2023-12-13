@@ -3,24 +3,17 @@
     xmlns:tools="http://schemas android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#DD5341"
+    android:background="#F9F5EB"
     tools:context=".profileFragment">
 
     <Button
-        android:id="@+id/button8"
+        android:id="@+id/logout"
         android:layout_width="170dp"
         android:layout_height="wrap_content"
-        android:text="Archive"
         android:layout_marginStart="100dp"
-        android:layout_marginTop="400dp"/>
-
-    <Button
-        android:id="@+id/button7"
-        android:layout_width="170dp"
-        android:layout_height="wrap_content"
-        android:text="Settings"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="500dp"/>
+        android:layout_marginTop="400dp"
+        android:fontFamily="@font/sen_bold"
+        android:text="Log-out" />
 
     <Button
         android:id="@+id/button2"
@@ -28,6 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
         android:layout_marginTop="300dp"
+        android:fontFamily="@font/sen_bold"
         android:text="About" />
 
     <FrameLayout
@@ -38,12 +32,13 @@
 
 
         <TextView
-            android:id="@+id/textView7"
+            android:id="@+id/username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="160dp"
-            android:text="NAME"
             android:layout_marginTop="80dp"
+            android:fontFamily="@font/sen_extrabold"
+            android:text="NAME"
             android:textSize="25sp" />
 
         <ImageView
